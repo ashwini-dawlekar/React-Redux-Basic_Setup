@@ -16,12 +16,24 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ],
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      exclude: /node_modules/,
-      include: __dirname
-    }]
-  }
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: ['babel'],
+
+
+                query: {
+                    presets: ['es2015', 'react']
+                }
+            },
+            { test: /\.(png|jpg|gif|jpeg|svg)$/, loader: 'url-loader?limit=8192'},
+            { test: /\.css$/, loader: 'style-loader!css-loader' },
+            { test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
+            { test: /\.(ttf|eot|svg)(\?[a-z0-9#=&.]+)?$/, loader: 'file' }
+
+        ]
+
+    }
 }

@@ -1,33 +1,19 @@
-export const HELLO_WORLD = 'HELLO_WORLD'
+export const BOOK_LIST = 'BOOK_LIST'
+export const ADD_BOOK = 'ADD_BOOK'
 
-export const helloWorld = () => {
-    console.log('helloWorld actions')
+import axios from 'axios';
+
+export const getAllBooks = () => {
+    const request = axios.get("http://10.0.28.180:3002/api/getBookList");
     return {
-        type: HELLO_WORLD,
-        payload:[
-            {
-                "id": 1,
-                "name": "User1",
-                "city":"City1",
-            },
-            {
-                "id": 2,
-                "name": "User2",
-                "city":"City2",
-
-            },
-            {
-                "id": 3,
-                "name": "User3",
-                "city":"City3",
-
-            },
-            {
-                "id": 4,
-                "name": "User4",
-                "city":"City4",
-
-            }
-        ]
+        type: BOOK_LIST,
+        payload: request
+    }
+}
+export const addnewbook = (books) => {
+    const request = axios.post("http://10.0.28.180:3002/api/getBookList",books);
+    return {
+        type: ADD_BOOK,
+        payload: request
     }
 }

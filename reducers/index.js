@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import helloWorld from './helloWorld'
+import Book from './Book'
 
-const helloReducer = combineReducers({
-  helloWorld
+const bookReducer = combineReducers({
+    Book
 })
 
-export default helloReducer
+export default bookReducer
